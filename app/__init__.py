@@ -12,7 +12,6 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db)
 
-    # Importa aquí las rutas
     with app.app_context():
         from app import models
         from app.routes import bp
