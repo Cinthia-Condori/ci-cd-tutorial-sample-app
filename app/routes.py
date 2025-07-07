@@ -1,13 +1,14 @@
-from flask import json, jsonify
-from app import app
+from flask import Blueprint, jsonify
 from app import db
 from app.models import Menu
 
-@app.route('/')
-def home():
-	return jsonify({ "status": "ok" })
+bp = Blueprint('main', __name__)
 
-@app.route('/menu')
+@bp.route('/')
+def home():
+    return jsonify({ "status": "ok" })
+
+@bp.route('/menu')
 def menu():
     today = Menu.query.first()
     if today:
